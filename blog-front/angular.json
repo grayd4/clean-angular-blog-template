@@ -116,5 +116,8 @@
       }
     }
   },
-  "defaultProject": "angular-blog-clean"
+  "defaultProject": "angular-blog-clean",
+  "cli": {
+    "analytics": false
+  }
 }
