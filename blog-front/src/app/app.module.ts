@@ -18,6 +18,7 @@ import { PreviewPostComponent } from "./preview-post/preview-post.component";
 import { AuthorPostComponent } from "./author-post/author-post.component";
 import { LoadingComponent } from "./loading/loading.component";
 import { HttpClientModule } from '@angular/common/http';
+import { PortfolioComponent } from './portfolio/portfolio.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     MastheadComponent,
     PreviewPostComponent,
     AuthorPostComponent,
-    LoadingComponent
+    LoadingComponent,
+    PortfolioComponent
   ],
   imports: [
     BrowserModule,
