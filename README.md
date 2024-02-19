@@ -40,8 +40,8 @@ A simple and clean blog template based off of the [startbootstrap.com](https://s
 
 ## Author 👨‍💻
 
-[David Brookton](https://davidbrookton.com)
+[Daniel Gray](https://davidbrookton.com)
 
 ## License 🌵
 
-MIT © [David Brookton](https://davidbrookton.com)
+MIT © [Daniel Gray](https://davidbrookton.com)

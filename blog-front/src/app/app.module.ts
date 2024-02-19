@@ -17,6 +17,7 @@ import { MastheadComponent } from "./masthead/masthead.component";
 import { PreviewPostComponent } from "./preview-post/preview-post.component";
 import { AuthorPostComponent } from "./author-post/author-post.component";
 import { LoadingComponent } from "./loading/loading.component";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { LoadingComponent } from "./loading/loading.component";
     BrowserAnimationsModule,
     HttpModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

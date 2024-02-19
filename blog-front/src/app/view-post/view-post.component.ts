@@ -25,11 +25,11 @@ export class ViewPostComponent implements OnInit {
   }
 
   public deletePost() {
-    const id = this.route.snapshot.paramMap.get("id");
+    /*const id = this.route.snapshot.paramMap.get("id");
     this.postService.deletePost(id).subscribe(res => {
       console.log("Deleted Post" + id);
       this.router.navigate(["/home"]);
-    });
+    });*/
   }
 
   private getPost(): void {
