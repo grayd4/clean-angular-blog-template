@@ -4,5 +4,7 @@
     "content": "Hello World",
     "title": "This is the first post!",
     "author": "Daniel Gray",
-    "Created_date": "Feb 18 2024"
+    "Created_date": "Feb 18 2024",
+    "photos": [],
+    "postType": 1
 }

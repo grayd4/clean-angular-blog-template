@@ -1,3 +1,5 @@
+import { PostType } from "../post-type.enum";
+
 export class BlogPost {
     status: string[];
     _id: string;
@@ -5,6 +7,8 @@ export class BlogPost {
     title: string;
     author: string;
     Created_date: string;
+    photos: string[];
+    postType: PostType;
 
     //assign vals from json to properties
     constructor(values: Object = {}) { 

@@ -1,0 +1,10 @@
+{
+    "status": ["active"],
+    "_id": "post3",
+    "content": "Hello World",
+    "title": "This is the first portfolio post!",
+    "author": "Daniel Gray",
+    "Created_date": "Feb 19 2024",
+    "photos": [],
+    "postType": 2
+}

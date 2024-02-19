@@ -4,6 +4,7 @@ import { ActivatedRoute } from "@angular/router";
 import { BlogPostService } from "src/app/service/blog-post.service";
 import { BlogPost } from "src/app/models/blog-post";
 import { JsonPipe } from "@angular/common";
+import { PostType } from "../post-type.enum";
 
 @Component({
   selector: "app-view-post",
@@ -36,7 +37,7 @@ export class ViewPostComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get("id"); //+ is JS conversion from string to int (which id should be)
     console.log("id: " + id);
 
-    this.postService.GetPost(id).subscribe(post => {
+    this.postService.GetPost(PostType.BlogEntry, id).subscribe(post => {
       console.log("post: " + JSON.stringify(post));
       this.post = post;
       this.loading = false;

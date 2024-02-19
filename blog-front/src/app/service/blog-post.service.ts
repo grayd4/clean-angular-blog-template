@@ -8,6 +8,7 @@ import { Observable, from, forkJoin, of } from "rxjs";
 import * as fs from "file-system";
 import * as path from "path";
 import { HttpClient } from '@angular/common/http';
+import { PostType } from "../post-type.enum";
 
 @Injectable({
   providedIn: "root"
@@ -15,35 +16,26 @@ import { HttpClient } from '@angular/common/http';
 export class BlogPostService {
   constructor(private apiService: ApiService, private http: HttpClient) {}
 
-  public GetPosts(sortBy: string = 'Created_date'): Observable<BlogPost[]> {
+  public GetPosts(postType: PostType = PostType.BlogEntry, sortBy: string = 'Created_date'): Observable<BlogPost[]> {
 
     // For using local posts
-    const fileNames = ["post1", "post2"];
+    const fileNames = ["post1", "post2", "post3"];
 
     const fileObservables = fileNames.map((fileName) =>
-      this.readBlogPost(fileName)
+      this.readBlogPost(postType, fileName)
     );
     return forkJoin(fileObservables).pipe(
       map((blogPosts) => {
         // Sort the blogPosts array based on the provided property
         // Defauly by date newest first
-        return blogPosts.sort((a, b) => (b[sortBy] > a[sortBy] ? 1 : -1));
+        return blogPosts.sort((a, b) => (b[sortBy] > a[sortBy] ? 1 : -1)).filter((post) => post.postType === postType);
       })
     );
-
-    // For using the API
-    /* 
-    return this.apiService.Get(environment.api.entries).pipe(
-        map(json => {
-            // Map API response to BlogPost objects
-            return json.map(post => new BlogPost(post));
-        })
-    );
-    */
   }
 
   // Read and parse a single blog post from a file
-  private readBlogPost(fileName: string): Observable<BlogPost> {
+  private readBlogPost(postType: PostType = PostType.BlogEntry, fileName: string): Observable<BlogPost> {
+
     return this.http.get(`assets/posts/${fileName}.json`).pipe(
       map((jsonData) => new BlogPost(jsonData)),
       catchError((error) => {
@@ -53,17 +45,10 @@ export class BlogPostService {
     );
   }
 
-  public GetPost(fileName: string): Observable<BlogPost> {
+  public GetPost(postType: PostType = PostType.BlogEntry, fileName: string): Observable<BlogPost> {
     
     // Local way
-    return this.readBlogPost(fileName);
-
-    // API way
-    /*return this.apiService.Get(environment.api.entries + "/" + id).pipe(
-      map(json => {
-        return new BlogPost(json);
-      })
-    );*/
+    return this.readBlogPost(postType, fileName);
   }
 
   public CreatePost(post: BlogPost): Observable<any> {
