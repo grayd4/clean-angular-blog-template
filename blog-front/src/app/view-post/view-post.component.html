@@ -13,7 +13,7 @@
       <app-photo [photo]="photos[0]"></app-photo>
     </div>
 
-    <h3 class="post-content" [innerHTML]="post.content"></h3>
+    <h5 class="post-content" [innerHTML]="post.content"></h5>
 
     <div class="row" *ngIf="photos.length >= 2">
         <app-photo *ngFor="let photo of photos | slice:1" [photo]="photo"></app-photo>

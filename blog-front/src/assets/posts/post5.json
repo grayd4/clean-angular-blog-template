@@ -1,0 +1,10 @@
+{
+    "status": ["active"],
+    "_id": "post5",
+    "content": "<p>My website is a constant work in progress. It’s an Angular web app with static content that I’ve hosted in Azure. Later down the line I hope to leverage Azure databases, storage, and APIs to host the blog posts, images, & API in the cloud.</p><p>This site is a fork of the <a href='https://github.com/koshyviv/clean-angular-blog-template' >Clean Angular Blog Template</a> project.</p><p>My version's github: <a href='https://github.com/grayd4/clean-angular-blog-template' >Clean Angular Blog Template</a>",
+    "title": "This Website!",
+    "author": "Daniel Gray",
+    "Created_date": "Jun 03 2024",
+    "photoIds": ["this-website-1"],
+    "postType": 2
+}

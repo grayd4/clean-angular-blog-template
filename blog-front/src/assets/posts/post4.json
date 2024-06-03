@@ -1,7 +1,7 @@
 {
     "status": ["active"],
     "_id": "post4",
-    "content": "Hello World",
+    "content": "<p>This is a neat little gadget I was able to put together. After installing Open Hardware Monitor (OHWM) on my PC, I was able to write and run a Python script to parse the OHWM data. The script formats the data and send it over serial to a COM port.</p><p>From here the Arduino takes over. It accepts the serial data, parses it, and displays it on the integrated display. A potentiometer calibrates the display contrast to the user's preference. The device contains an RGB LED which cycles between various colors. If some performance value goes beyond an agreed upon value (e.g. RAM usage > 50%), the LED turns yellow or red.</p><p>I designed and printed the 3D-printed housing for the monitor myself.</p><p><a href='https://github.com/grayd4/Arduino-PC-Monitor'>Project Github</a></p>",
     "title": "Arduino PC Performance Monitor with Bespoke 3D-Printed Housing",
     "author": "Daniel Gray",
     "Created_date": "Jun 01 2024",

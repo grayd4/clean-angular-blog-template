@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   }
 
   private getPosts(): void {
-    this.postService.GetPosts().subscribe(posts => {
+    this.postService.GetPosts(null).subscribe(posts => {
       this.posts = posts;
       this.loading = false;
     });

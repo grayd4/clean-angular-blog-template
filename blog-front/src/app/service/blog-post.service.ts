@@ -20,7 +20,7 @@ export class BlogPostService {
   public GetPosts(postType: PostType = PostType.BlogEntry, sortBy: string = 'Created_date'): Observable<BlogPost[]> {
 
     // For using local posts
-    const fileNames = ["post1", "post2", "post3", "post4"];
+    const fileNames = ["post1", "post2", "post3", "post4", "post5"];
 
     const fileObservables = fileNames.map((fileName) =>
       this.readBlogPost(postType, fileName)
@@ -29,7 +29,9 @@ export class BlogPostService {
       map((blogPosts) => {
         // Sort the blogPosts array based on the provided property
         // Defauly by date newest first
-        return blogPosts.sort((a, b) => (b[sortBy] > a[sortBy] ? 1 : -1)).filter((post) => post.postType === postType);
+        if (null == postType) {
+          return blogPosts.sort((a, b) => (b[sortBy] > a[sortBy] ? 1 : -1));
+        } else return blogPosts.sort((a, b) => (b[sortBy] > a[sortBy] ? 1 : -1)).filter((post) => post.postType === postType);
       })
     );
   }
