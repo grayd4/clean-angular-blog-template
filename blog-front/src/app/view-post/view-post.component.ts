@@ -47,7 +47,7 @@ export class ViewPostComponent implements OnInit {
       this.loading = false;
 
       // Retrieve photo details
-      // Aray function allows use of "this" keyword
+      // Arrow function allows use of "this" keyword
       this.post.photoIds.forEach(id => {
         console.log("photo: " + id);
         this.postService.GetPhoto(id).subscribe(photo => {

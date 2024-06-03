@@ -2,6 +2,9 @@
   <a (click)="go()" class="pointer">
     <h2 class="post-title" [textContent]="post.title">
     </h2>
+    <div class="row" *ngIf="!loadingPhoto">
+      <app-photo [photo]="photo"></app-photo>
+    </div>
     <h3 class="post-subtitle" [innerHTML]="post.content.length > 48 ? post.content.substring(0, 50)+'...' : post.content">
     </h3>
   </a>
