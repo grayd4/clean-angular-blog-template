@@ -7,7 +7,7 @@ export class BlogPost {
     title: string;
     author: string;
     Created_date: string;
-    photos: string[];
+    photoIds: string[];
     postType: PostType;
 
     //assign vals from json to properties

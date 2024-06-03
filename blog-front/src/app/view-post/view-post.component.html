@@ -9,7 +9,15 @@
   <div class="col-lg-8 col-md-10 mx-auto">
     <h1 [textContent]="post.title"></h1>
 
-    <h3 class="post-content" [textContent]="post.content"></h3>
+    <div class="row" *ngIf="photos.length >= 1">
+      <app-photo [photo]="photos[0]"></app-photo>
+    </div>
+
+    <h3 class="post-content" [innerHTML]="post.content"></h3>
+
+    <div class="row" *ngIf="photos.length >= 2">
+        <app-photo *ngFor="let photo of photos | slice:1" [photo]="photo"></app-photo>
+    </div>
 
     <p style="color: grey; text-align: center;" class="post-meta"><i>Posted by </i>
       <i><a href="#" style="color: grey; text-decoration: none;" [textContent]="post.author"></a></i>

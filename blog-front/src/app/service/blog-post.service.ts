@@ -9,6 +9,7 @@ import * as fs from "file-system";
 import * as path from "path";
 import { HttpClient } from '@angular/common/http';
 import { PostType } from "../post-type.enum";
+import { PostPhoto } from "../models/post-photo";
 
 @Injectable({
   providedIn: "root"
@@ -19,7 +20,7 @@ export class BlogPostService {
   public GetPosts(postType: PostType = PostType.BlogEntry, sortBy: string = 'Created_date'): Observable<BlogPost[]> {
 
     // For using local posts
-    const fileNames = ["post1", "post2", "post3"];
+    const fileNames = ["post1", "post2", "post3", "post4"];
 
     const fileObservables = fileNames.map((fileName) =>
       this.readBlogPost(postType, fileName)
@@ -31,6 +32,26 @@ export class BlogPostService {
         return blogPosts.sort((a, b) => (b[sortBy] > a[sortBy] ? 1 : -1)).filter((post) => post.postType === postType);
       })
     );
+  }
+
+  public GetPost(postType: PostType = PostType.BlogEntry, fileName: string): Observable<BlogPost> {
+    
+    // Local way
+    return this.readBlogPost(postType, fileName);
+  }
+
+  public GetPhoto(fileName: string): Observable<PostPhoto> {
+    
+    // Local way
+    return this.readPhoto(fileName);
+  }
+
+  public CreatePost(post: BlogPost): Observable<any> {
+    return this.apiService.Post(environment.api.entries, post);
+  }
+
+  public deletePost(id) {
+    return this.apiService.Delete(environment.api.entries + "/" + id);
   }
 
   // Read and parse a single blog post from a file
@@ -45,19 +66,15 @@ export class BlogPostService {
     );
   }
 
-  public GetPost(postType: PostType = PostType.BlogEntry, fileName: string): Observable<BlogPost> {
-    
-    // Local way
-    return this.readBlogPost(postType, fileName);
+  // Read and parse a single blog photo from a file
+  private readPhoto(fileName: string): Observable<PostPhoto> {
+
+    return this.http.get(`assets/post-photos/${fileName}.json`).pipe(
+      map((jsonData) => new PostPhoto(jsonData)),
+      catchError((error) => {
+        console.error(`Error reading file ${fileName}.json:`, error);
+        return of(null); // Return an observable to continue processing other files
+      })
+    );
   }
-
-  public CreatePost(post: BlogPost): Observable<any> {
-    return this.apiService.Post(environment.api.entries, post);
-  }
-
-  public deletePost(id) {
-    return this.apiService.Delete(environment.api.entries + "/" + id);
-  }
-
-
 }

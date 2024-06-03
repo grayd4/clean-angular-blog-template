@@ -1,0 +1,10 @@
+{
+    "status": ["active"],
+    "_id": "post4",
+    "content": "Hello World",
+    "title": "Arduino PC Performance Monitor with Bespoke 3D-Printed Housing",
+    "author": "Daniel Gray",
+    "Created_date": "Jun 01 2024",
+    "photoIds": ["PC-Monitor-1", "PC-Monitor-2"],
+    "postType": 2
+}
